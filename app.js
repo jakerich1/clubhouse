@@ -10,8 +10,9 @@ const session = require('express-session');
 const User = require('./models/user');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs')
+var compression = require('compression')
 
-const mongoDb = "mongodb+srv://jrich01:ZxrRhwLjszfCP59@cluster0.qa0dh.mongodb.net/clubhouse?retryWrites=true&w=majority";
+const mongoDb = process.env.MONGODB_URI;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
@@ -59,6 +60,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(compression())
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true}));
 app.use(passport.initialize());
