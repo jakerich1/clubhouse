@@ -1,0 +1,16 @@
+<h2>{{title}}</h2>
+
+<form action='/login' method='post'>
+
+    <input type='text' name='username' placeholder='Enter Username' required='required'>
+    <input type='password' name='password' placeholder='Enter Password' required='required'>
+  
+    <button type='submit'>Submit</button>
+
+    {{#if problem}}
+    <br>
+    <br>
+    <p>Username or password is incorrect</p>
+    {{/if}}
+
+</form>

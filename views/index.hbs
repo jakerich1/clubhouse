@@ -1,0 +1,47 @@
+{{#if currentUser}}
+<a class='a-button' href='/create'><button>New post</button></a>
+{{/if}}
+
+{{#if currentUser.admin}}
+
+    {{#each posts}}
+        <div class="post">
+            <p>{{this.content}}</p>
+            <div class='detail'>
+                <p class='time'>{{this.timestamp_formatted}}</p>
+                <p class='time'>{{this.user.username}}</p> 
+                <form action="{{this.url}}/delete" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    {{/each}}
+
+    {{else}}
+
+    {{#if currentUser.member}}
+
+        {{#each posts}}
+            <div class="post">
+                <p>{{this.content}}</p>
+                <div class='detail'>
+                    <p class='time'>{{this.timestamp_formatted}}</p>
+                    <p class='time'>{{this.user.username}}</p> 
+                </div>
+            </div>
+        {{/each}}
+
+        {{else}}
+
+        {{#each posts}}
+            <div class="post">
+                <p>{{this.content}}</p>
+                <div class='detail'>
+                    <p class='time'>{{this.timestamp_formatted}}</p>
+                </div>
+            </div>
+        {{/each}}
+    
+    {{/if}}
+
+{{/if}}

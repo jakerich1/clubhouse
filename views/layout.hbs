@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <nav>
+      <a href='/'><h1>Clubhouse</h1></a>
+      <form action='/logout' method='post'>
+        {{#if currentUser}}
+        <a class='a-button nav-btn' href='/admin'>admin</a>
+        <a class='a-button nav-btn' href='/member'>member</a>
+        <button class='nav-btn' type="submit">logout</button>
+        {{else}}
+        <a class='a-button nav-btn' href='/signup'>sign-up</a>
+        <a class='a-button nav-btn' href='/login'>login</a>
+        {{/if}}
+      </form>
+    </nav>
+    <main>
+      <div class='middle-col'>
+        {{{body}}}
+      </div>
+    </main>
+  </body>
+</html>

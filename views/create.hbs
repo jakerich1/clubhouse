@@ -1,0 +1,12 @@
+
+
+<form action='' method='post'>
+    <textarea name='content' placeholder="write your post here"></textarea>
+    {{#if currentUser}}
+    <button type="submit">Post</button>
+    {{else}}
+    <br>
+    <p>You must be logged in to post</p>
+    {{/if}}
+    
+</form>
